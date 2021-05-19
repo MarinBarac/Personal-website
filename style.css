@@ -100,23 +100,76 @@ header{
 
 .hello-title{
     position: absolute;
-    color: white;
     z-index: 10;
     top: 30%;
-    left: 20%;
-    display: flex;
-    flex-direction: column;
+    left: 15%;
+    display: grid;
+    grid-template-rows: 4.2rem 4.2rem 4.2rem 1rem auto;
+    grid-row-gap: 0.5rem;
+    background: transparent;
 }
 
 .hello-title .text{
-    display: block;
+    position: relative;
+    justify-self: start;
+    font-family: sans-serif;
+    font-size: 4rem;
     font-weight: 700;
-    font-size: 2.5rem;
     letter-spacing: 0.05rem;
+    color: white;
+    overflow: hidden;
+    align-self: center;
+}
+
+.text-1{
+    opacity: 0;
+    animation: show 500ms ease-in-out 1.8s forwards;
+}
+
+.text-2{
+    opacity: 0;
+    animation: show 500ms linear 3.3s forwards;
 }
 
 .hello-title .highlighted{
-    color: rgb(255, 37, 37);
+    color: rgb(255,37,37);
+    opacity: 0;
+    animation: show 500ms linear 4.8s forwards;
+}
+
+.red-box-1{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    background-color: rgb(255,37,37);
+    height: 100%;
+    animation: slide 1.5s ease-in-out 1s forwards;
+}
+
+.red-box-2{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    background-color: rgb(255,37,37);
+    height: 100%;
+    animation: slide 1.5s ease-in-out 2.5s forwards;
+}
+
+.red-box-3{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    background-color: rgb(255,37,37);
+    height: 100%;
+    animation: slide 1.5s ease-in-out 4s forwards;
+}
+
+.portfolio-button{
+    justify-self: start;
+    grid-row: 5 / 6;
 }
 
 .portfolio-button a{
@@ -125,11 +178,10 @@ header{
     display: block;
     width: 100%;
     height: 100%;
-    padding: 1rem;
+    padding: 1.5rem;
     font-size: 1.4rem;
     border: 2px solid rgb(255, 37, 37);
     text-align: center;
-    margin-top: 0.5rem;
 }
 
 .portfolio-button a:hover{
@@ -420,24 +472,42 @@ footer{
         padding: 1rem 1rem;
     }
     .toggle-button{
+        position: relative;
         display: block;
-        width: 3rem;
-        height: 3rem;
+        width: 3.3rem;
+        height: 3.3rem;
         background: transparent;
-        border: 1px solid white;
+        border: 2px solid white;
         border-radius: 50%;
         cursor: pointer;
         padding-top: 0;
         padding-bottom: 0;
+        animation: pulse 1s infinite;
     }
     .toggle-button__bar {
+        position: absolute;
         width: 100%;
-        height: 0.05rem;
-        width: 80%;
+        height: 0.12rem;
+        width: 60%;
         background: white;
         display: block;
         margin: 0.5rem auto;
+
     }
+
+    .toggle-button__bar-1{
+        top: 15%;
+        left: 20%;
+    }
+    .toggle-button__bar-2{
+        left: 20%;
+        top: 33%;
+    }
+    .toggle-button__bar-3{
+        left: 20%;
+        top: 51%;
+    }
+
     .toggle-button:active,
     .toggle-button__bar:active{
         box-shadow: 0px 0px 15px rgba(255,255,255,0.8);
@@ -449,6 +519,11 @@ footer{
 }
 
 @media (min-width: 320px) and (max-width: 600px){
+    .hello-title{
+        top: 37%;
+        grid-template-rows: 2.2rem 2.2rem 2.2rem 0.5rem auto;
+        grid-row-gap: 0;
+    }
     .hello-title .text{
         font-weight: 700;
         font-size: 2rem;
@@ -538,6 +613,16 @@ footer{
 }
 
 @media (min-width: 600px) and (max-width: 992px){
+    .toggle-button{
+        width: 3.7rem;
+        height: 3.7rem;
+    }
+    .toggle-button__bar {
+        height: 0.13rem;
+    }
+    .hello-title{
+        top: 37%;
+    }
     .services-cards{
         grid-template-columns: 1fr 1fr;
         grid-row-gap: 2rem;
@@ -552,4 +637,78 @@ footer{
         width: 50%;
     }
     
+}
+
+
+@keyframes slide{
+    0%{
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+    
+    50%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100%{
+        transform: translateX(101%);
+        opacity: 1;
+    }
+}
+
+@keyframes show{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow: 0px 0px 5px 1px rgba(255,255,255,0.8);
+    }
+    50%{
+        box-shadow: 0px 0px 15px 2px rgba(255,255,255,0.8);
+    }
+    100%{
+        box-shadow: 0px 0px 5px 1px rgba(255,255,255,0.8);
+    }
+    
+}
+
+@keyframes down-1{
+    0%{
+        top: 15%;
+    }
+    100%{
+        top: 33%;
+    }
+}
+
+@keyframes up-1{
+    0%{
+        top: 33%;
+    }
+    100%{
+        top: 15%;
+    }
+}
+
+@keyframes up-2{
+    0%{
+        top: 51%;
+    }
+    100%{
+        top: 33%;
+    }
+}
+@keyframes down-2{
+    0%{
+        top: 33%;
+    }
+    100%{
+        top: 51%;
+    }
 }

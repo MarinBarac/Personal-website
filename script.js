@@ -7,14 +7,14 @@ var a;
 toggleButton.addEventListener('click', function(){
     if(a == 1){
         mobileNav.style.display = "none";
-        toggleButtonBar_1.style.display = "block"
-        toggleButtonBar_3.style.display = "block"
+        toggleButtonBar_1.style.animation = "up-1 500ms forwards";
+        toggleButtonBar_3.style.animation = "down-2 500ms forwards";
         return a=0;
     }
     else {
         mobileNav.style.display = "flex";
-        toggleButtonBar_1.style.display = "none"
-        toggleButtonBar_3.style.display = "none"
+        toggleButtonBar_1.style.animation = "down-1 500ms forwards";
+        toggleButtonBar_3.style.animation = "up-2 500ms forwards";
         return a=1;
     }
 })
@@ -24,7 +24,7 @@ mobileNav.addEventListener('click', closeMobileNav)
 
 function closeMobileNav() {
     mobileNav.style.display = "none";
-    toggleButtonBar_1.style.display = "block"
-    toggleButtonBar_3.style.display = "block"
+    toggleButtonBar_1.style.animation = "up-1 500ms forwards";
+    toggleButtonBar_3.style.animation = "down-2 500ms forwards";
     return a=0;
 }
